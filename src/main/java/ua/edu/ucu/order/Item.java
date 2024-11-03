@@ -4,6 +4,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class Item {
-    private int price;
+public abstract class Item {
+    double price;
+    private String description;
+    public abstract double getPrice();
+    public String getDescription() {
+        return description;
+    }
 }

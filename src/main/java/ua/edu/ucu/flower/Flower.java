@@ -1,15 +1,20 @@
 package ua.edu.ucu.flower;
 
 import ua.edu.ucu.order.Item;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
+@Setter @Getter @Table @Entity
 public class Flower extends Item {
+    @Id 
+    private Long id;
     @Getter
     private double sepalLength;
     private FlowerColor color;
+    private double price;
     @Getter
     private FlowerType flowerType;
     
@@ -17,7 +22,9 @@ public class Flower extends Item {
         sepalLength = 0;
         this.setPrice(0);
     }
-
+    public double getPrice() {
+        return price;
+    }
     public Flower(Flower flower) {
         sepalLength = flower.sepalLength;
         color = flower.color;
@@ -31,5 +38,9 @@ public class Flower extends Item {
 
     public FlowerSpecification getSpecification() {
         return new FlowerSpecification(color, flowerType);
+    }
+
+    public String getDescription() {
+        return "Flower";
     }
 }
